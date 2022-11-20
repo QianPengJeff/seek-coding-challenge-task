@@ -12,19 +12,23 @@ export class CheckOutService {
 
   constructor() { }
 
+  //get and assign pricingRule to local variable
   public newPricingRule(pricingRules: IPricingRule[]) {
     this.pricingRules = pricingRules;
   }
 
+  //set Customer Name
   public setCustomerName(name: string) {
     this.customerName = name;
   }
 
+  //add item
   public add(item: IProduct) {
     this.cart.push(item);
     return this.cart;
   }
 
+  //remove item
   public remove(item: IProduct) {
     const index = this.cart.indexOf(item, 0);
       if (index > -1) {
@@ -33,6 +37,7 @@ export class CheckOutService {
       return this.cart;
   }
 
+  //Calculate fixed price deals price
   private calculateFixedPriceDealsPrice(pricingRule: IPricingRule, cart: IProduct[]) {
     let totalPrice = 0;
     if(pricingRule.fixedPriceDeals.length > 0) {
@@ -47,6 +52,7 @@ export class CheckOutService {
     return totalPrice;
   }
 
+  //Calculate special deals price
   private calculateSpecialDealsPrice(pricingRule: IPricingRule, cart: IProduct[]) {
     let totalPrice = 0;
     if(pricingRule.specialDeals.length > 0) {
@@ -66,36 +72,32 @@ export class CheckOutService {
     return totalPrice;
   }
 
+  //get nonDiscounted items
   private getNonDiscountedItems(pricingRule: IPricingRule, cart: IProduct[]) {
-    var nonDiscountedItems: IProduct[] = [];
+    let nonDiscountedItems: IProduct[] = [];
+    let DiscountedItemNames: string[] = [];
       //specialDeals
       if(pricingRule.specialDeals.length > 0) {
         pricingRule.specialDeals.forEach(item => {
-          let productName = item.productName.toLowerCase().replace(/\s/g, "");
-          if(nonDiscountedItems.length == 0){
-            nonDiscountedItems = cart.filter(x => x.name.toLowerCase() != productName);
-          } else {
-            nonDiscountedItems = nonDiscountedItems.filter(x => x.name.toLowerCase() != productName);
-          }
+          DiscountedItemNames.push(item.productName.toLowerCase().replace(/\s/g, ""));
         });
       }
-
       //fixedPriceDeals
       if(pricingRule.fixedPriceDeals.length > 0) {
         pricingRule.fixedPriceDeals.forEach(item => {
-          let productName = item.productName.toLowerCase().replace(/\s/g, "");
-          if(nonDiscountedItems.length == 0){
-            nonDiscountedItems = cart.filter(x => x.name.toLowerCase().replace(/\s/g, "") != productName);
-          } else {
-            nonDiscountedItems = nonDiscountedItems.filter(x => x.name.toLowerCase().replace(/\s/g, "") != productName);
-          }
+          DiscountedItemNames.push(item.productName.toLowerCase().replace(/\s/g, ""));
         });
+      }
+
+      if(DiscountedItemNames.length > 0){
+        nonDiscountedItems = cart.filter(item => !DiscountedItemNames.includes(item.name.toLowerCase().replace(/\s/g, "")));
       }
       return nonDiscountedItems;
   }
 
+  //checkout and return total price
   public checkOut() {
-    var pricingRule  = this.pricingRules.find(x => x.customerName === this.customerName);
+    let pricingRule  = this.pricingRules.find(x => x.customerName === this.customerName);
     let totalPrice = 0;
     if(pricingRule) {
       let nonDiscountedItems: IProduct[] = this.getNonDiscountedItems(pricingRule, this.cart);
@@ -114,6 +116,7 @@ export class CheckOutService {
         })
       }
     } else {
+      //for non-privileged customers 
       this.cart.forEach(item => {
         totalPrice += item.price;
       })
