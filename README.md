@@ -29,6 +29,7 @@ Run ```npm run test``` to execute the unit tests via [Karma](https://karma-runne
 I assume that he data of products and the pricing rules are coming from CMS, so in the code, I use products service (products.service.ts) and pricing rules service (pricing-rules.service.ts) to return those data to the component.
 
 json data of products (products.json under assets folder): 
+```
 [
     {
         "name": "Classic",
@@ -46,9 +47,11 @@ json data of products (products.json under assets folder):
         "price": 394.99
     }
 ]
+```
 
 
 json data of pricing rules (pricing-rules.json under assets folder): 
+```
 [
     {
         "customerName": "SecondBite",
@@ -96,3 +99,4 @@ json data of pricing rules (pricing-rules.json under assets folder):
         ]
     }
 ]
+```
