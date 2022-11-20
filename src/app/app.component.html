@@ -1,6 +1,48 @@
 <section>
-  <div>
-    <!-- contents here -->
+  <div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Description</th>
+          <th scope="col">Retail Price</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of products; let i = index;">
+          <th scope="row">{{i + 1}}</th>
+          <td>{{item.name}} Ad</td>
+          <td>{{item.description}}</td>
+          <td>{{item.price | currency}}</td>
+          <td>
+            <i class="fa-solid fa-circle-plus" (click)="addItem(item)"></i>
+            <span> {{getQuantity(item.name)}} </span>
+            <i class="fa-solid fa-circle-minus" (click)="removeItem(item)"></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="row">
+      <div *ngFor="let item of products">
+        <span *ngIf="getQuantity(item.name) > 0">{{item.name}} Ad x {{getQuantity(item.name)}}</span>
+      </div>
+    </div>
+    <br/>
+    <div class="row">
+      <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <label for="customerName">Customer name</label>
+        <input id="customerName" type="text" (change)="customerNameInput($event.target.value)" />
+      </div>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        Total Price: {{totalPrice | currency}}
+      </div>
+    </div>
+    <br/>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+      <button type="button" class="btn btn-primary" (click)="checkOut()">Check out</button>
+    </div>
   </div>
 </section>
 
