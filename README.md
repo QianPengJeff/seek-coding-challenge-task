@@ -1,27 +1,17 @@
-# SeekCodingChallengeTask
+# Seek Coding Challenge Task By Qian Peng
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.5.
+## setup
 
-## Development server
+Clone or download the project
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Open terminal and switch the path to the root folder of this project, run ```npm install```. My nodejs version is v16.14.0
 
-## Code scaffolding
+## Build and run the project
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+After installed all the dependencies, run ```npm run start``` to build and run the project
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Once the project compiled successfully, open http://localhost:4200/ to see the page on browsers. Tested in Chrome, Firefox and Safari (MacOS Big Sur)
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Run ```npm run test``` to execute the unit tests via [Karma](https://karma-runner.github.io).
