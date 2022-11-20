@@ -9,4 +9,9 @@ describe('PricingRuleService', () => {
     const service: PricingRulesService = TestBed.get(PricingRulesService);
     expect(service).toBeTruthy();
   });
+
+  it('should be created', () => {
+    const service: PricingRulesService = TestBed.get(PricingRulesService);
+    expect(service).toBeTruthy();
+  });
 });

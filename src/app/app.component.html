@@ -25,15 +25,17 @@
       </tbody>
     </table>
     <div class="row">
-      <div *ngFor="let item of products">
-        <span *ngIf="getQuantity(item.name) > 0">{{item.name}} Ad x {{getQuantity(item.name)}}</span>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-start">       
+        <label for="customerName">Customer name</label>
+        <input id="customerName" type="text" (change)="customerNameInput($event.target.value)" />
       </div>
     </div>
     <br/>
     <div class="row">
-      <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-        <label for="customerName">Customer name</label>
-        <input id="customerName" type="text" (change)="customerNameInput($event.target.value)" />
+      <div class="justify-content-md-start">       
+        <div *ngFor="let item of products">
+          <span *ngIf="getQuantity(item.name) > 0">{{item.name}} Ad x {{getQuantity(item.name)}}</span>
+        </div>
       </div>
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
         Total Price: {{totalPrice | currency}}

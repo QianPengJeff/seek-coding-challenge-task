@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IProduct } from './infrastructure/interfaces/iproduct';
+import { CheckOutService } from './infrastructure/services/check-out.service';
 import { PricingRulesService } from './infrastructure/services/pricing-rules.service';
 import { ProductsService } from './infrastructure/services/products.service';
 
@@ -9,29 +10,24 @@ import { ProductsService } from './infrastructure/services/products.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'seek-coding-challenge-task';
   products: IProduct[];
   cart: IProduct[] = [];
   totalPrice: number = 0;
 
-  constructor( private _productsService: ProductsService, 
+  constructor(private _checkOutService: CheckOutService, 
+    private _productsService: ProductsService, 
     private _pricingRulesService: PricingRulesService) 
   {
     this.products = this._productsService.getProducts();
-    console.log(this._pricingRulesService.getPricingRules());
+    _checkOutService.newPricingRule(this._pricingRulesService.getPricingRules());
   }
 
   addItem(item: IProduct) {
-    this.cart.push(item);
-    console.log("added");
+    this.cart = this._checkOutService.add(item);
   }
 
   removeItem(item: IProduct) {
-    const index = this.cart.indexOf(item, 0);
-      if (index > -1) {
-          this.cart.splice(index, 1);
-      }
-    console.log("removed");
+    this.cart = this._checkOutService.remove(item);
   }
 
   getQuantity(name: string){
@@ -41,10 +37,10 @@ export class AppComponent {
   }
 
   customerNameInput(name: string): void {  
-    console.log("name")
+    this._checkOutService.setCustomerName(name);
   }
 
   checkOut() {
-    console.log("checkout");
+    this.totalPrice = this._checkOutService.checkOut();
   }
 }
