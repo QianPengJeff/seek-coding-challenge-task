@@ -14,7 +14,7 @@ Once the project compiled successfully, open http://localhost:4200/ to see the p
 
 Below are the screenshots of the 3 example scenarios results:
 
-<img width="1348" alt="Screen Shot 1" src="https://user-images.githubusercontent.com/19439515/202891320-a298f595-22e1-4620-9feb-22df0a495546.png">
+<img width="1348" alt="Screen Shot 1" src="https://user-images.githubusercontent.com/19439515/202891643-cb7bb4e1-493e-4ba4-9589-c9d9bca976bb.png">
 
 <img width="1348" alt="Screen Shot 3" src="https://user-images.githubusercontent.com/19439515/202891330-8b221d0d-6c92-4155-adc2-a8bba00ea973.png">
 
