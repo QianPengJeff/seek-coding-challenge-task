@@ -1,0 +1,47 @@
+[
+    {
+        "customerName": "SecondBite",
+        "specialDeals": [
+            {
+                "productName": "Classic",
+                "discountType": "special-deal",
+                "description": "3 for 2 deal",
+                "paidItems": 2,
+                "freeItems": 1
+            }
+        ],
+        "fixedPriceDeals": []
+    },
+    {
+        "customerName": "Axil Coffee Roasters",
+        "specialDeals": [],
+        "fixedPriceDeals": [
+            {
+                "productName": "Stand out",
+                "discountType": "fixed-price",
+                "description": "Fixed price discount",
+                "dsicountedPrice": 299.99
+            }
+        ]
+    },
+    {
+        "customerName": "MYER",
+        "specialDeals": [
+            {
+                "productName": "Stand out",
+                "discountType": "special-deal",
+                "description": "5 for 4 offers",
+                "paidItems": 4,
+                "freeItems": 1
+            }
+        ],
+        "fixedPriceDeals": [
+            {
+                "productName": "Premium",
+                "discountType": "fixed-price",
+                "description": "Fixed price discount",
+                "dsicountedPrice": 389.99
+            }
+        ]
+    }
+]
